@@ -14,3 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+ul {
+  list-style-type: none;
+}
+
+img {
+  width: 100%;
+}
