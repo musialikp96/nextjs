@@ -6,3 +6,6 @@
     position: relative;
     aspect-ratio: 1;
 }
+.item img {
+    object-fit: cover;
+}

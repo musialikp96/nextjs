@@ -1,6 +1,7 @@
 import styles from './ImagesList.module.css';
 
-export const ImagesList = ({data, renderItem}) => {
+export const ImagesList = ({data, renderItem, onLoadMore}) => {
+
   return (
     <div className={styles.container}>
       {data.map((item) => (
@@ -9,7 +10,7 @@ export const ImagesList = ({data, renderItem}) => {
         </div>
       ))}
       <div className={styles.item}>
-        <button>Load more</button>
+        <button onClick={onLoadMore}>Load more</button>
       </div>
     </div>
   )
