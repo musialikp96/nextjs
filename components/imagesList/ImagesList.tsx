@@ -1,17 +1,22 @@
 import styles from './ImagesList.module.css';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export const ImagesList = ({data, renderItem, onLoadMore}) => {
 
   return (
-    <div className={styles.container}>
-      {data.map((item) => (
-        <div key={item.title} className={styles.item}>
-          {renderItem(item)}
-        </div>
-      ))}
-      <div className={styles.item}>
-        <button onClick={onLoadMore}>Load more</button>
+    <InfiniteScroll
+      dataLength={data.length}
+      next={onLoadMore}
+      hasMore={true}
+      loader={<h4>Loading...</h4>}
+    >
+      <div className={styles.container}>
+        {data.map((item) => (
+          <div key={item.title} className={styles.item}>
+            {renderItem(item)}
+          </div>
+        ))}
       </div>
-    </div>
+    </InfiniteScroll>
   )
 };

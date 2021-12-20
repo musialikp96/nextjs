@@ -1,6 +1,8 @@
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 80vw;
+    margin: auto;
 }
 .item {
     position: relative;
