@@ -3,14 +3,14 @@ import Image from 'next/image';
 import { ImagesList } from '../../components/imagesList/ImagesList';
 import { getImages } from '../../utils/images';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
-export async function getServerSideProps({query}) {
+export async function getStaticProps() {
   const images = await getImages(0);
 
   return {
     props: {
-      data: images,
-      query
+      data: images
     },
   }
 }
@@ -36,7 +36,7 @@ const Images: NextPage = (props) => {
       Here will be data from NASA ({images.length}):
       <ImagesList
         data={images}
-        renderItem={({url,title}) => <Image src={url} alt={title} layout={'fill'}/>}
+        renderItem={({url,title, date}) => <Link href={`/images/${date}`}><Image src={url} alt={title} layout={'fill'}/></Link>}
         onLoadMore={() => setPage(page => page + 1)}
       />
     </div>
